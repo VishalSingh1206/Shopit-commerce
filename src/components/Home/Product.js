@@ -1,7 +1,25 @@
 import React from "react";
 import "./Product.css";
 import { Title } from "@mui/icons-material";
-function Product({ title, image, price, rating }) {
+import { useStateValue } from "../Checkout/Stateprovider";
+
+function Product({ id, title, image, price, rating }) {
+  const [{ basket }, dispatch] = useStateValue();
+  console.log(basket);
+
+  const addToBasket = () => {
+    dispatch({
+      type: "ADD-TO-BASKET",
+      item: {
+        id: id,
+        title: title,
+        price: price,
+        rating: rating,
+        image: image,
+      },
+    });
+  };
+
   return (
     <div className="product">
       <div className="product__info">
@@ -20,7 +38,7 @@ function Product({ title, image, price, rating }) {
         </div>
       </div>
       <img className="product__image" src={image} alt="Product Photo" />
-      <button>ADD TO CART</button>
+      <button onClick={addToBasket}>ADD TO CART</button>
     </div>
   );
 }

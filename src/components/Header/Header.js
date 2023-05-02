@@ -2,14 +2,19 @@ import React from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import "./Header.css";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import { Link } from "react-router-dom";
+import { useStateValue } from "../Checkout/Stateprovider";
 
 function Header() {
+  const [{ basket }, dispatch] = useStateValue();
   return (
     <div className="header">
-      <img
-        className="header__logo"
-        src="https://raw.githubusercontent.com/VishalSingh1206/Shopit-commerce/master/public/Asset%203final.png"
-      ></img>
+      <Link to="/">
+        <img
+          className="header__logo"
+          src="https://raw.githubusercontent.com/VishalSingh1206/Shopit-commerce/master/public/Asset%203final.png"
+        />
+      </Link>
       <div className="header__search">
         <input className="header__searchIn" type="text"></input>
         <SearchIcon className="header__searchIcon"></SearchIcon>
@@ -28,10 +33,14 @@ function Header() {
           <span className="header__optionOne">Get</span>
           <span className="header__optionTwo">Prime</span>
         </div>
-        <div className="header__optionbasket">
-          <ShoppingCartIcon />
-          <span className="header__basketcount header__optionTwo">0</span>
-        </div>
+        <Link to="/checkout">
+          <div className="header__optionbasket">
+            <ShoppingCartIcon />
+            <span className="header__basketcount header__optionTwo">
+              {basket?.length}
+            </span>
+          </div>
+        </Link>
       </div>
     </div>
   );
