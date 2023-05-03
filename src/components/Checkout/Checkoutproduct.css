@@ -1,0 +1,36 @@
+.checkoutproduct{
+display: flex;
+margin-top: 20px;
+padding-top: 20px;
+width: 60vw;
+}
+.checkoutproduct__info{
+    margin-left: 20px;
+}
+.checkoutproduct__info>button{
+    color: white;
+    padding: 10px 10px; 
+    background-color:#FF7900;
+    border: none;
+    border-radius: 10px;
+}
+.checkoutproduct__image{
+    object-fit: contain;
+    width: 160px;
+    height: 160px;
+    
+}
+.checkoutproduct__info>button:hover{
+    background-color:#833d00;
+    /* color: rgb(0, 0, 0); */
+    transition: 20ms;
+    cursor: pointer;
+}
+.checkoutproduct__rating{
+    display: flex;
+    padding-top: 5px;
+    padding-bottom: 10px;
+}
+.checkoutproduct__price{
+    padding-top: 10px;
+}

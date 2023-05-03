@@ -20,6 +20,9 @@
     color: #140020;
     /* font-weight: bold; */
 }
+.product__price{
+    padding-top: 10px;
+}
 .product__image{
     max-height: 200px;
     width: 100%;

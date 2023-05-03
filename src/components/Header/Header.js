@@ -31,7 +31,7 @@ function Header() {
         </div>
         <div className="header__option">
           <span className="header__optionOne">Get</span>
-          <span className="header__optionTwo">Prime</span>
+          <span className="header__optionTwo">Premium</span>
         </div>
         <Link to="/checkout">
           <div className="header__optionbasket">
