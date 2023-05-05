@@ -21,10 +21,13 @@ function Header() {
         {/*Logo*/}
       </div>
       <div className="header__nav">
-        <div className="header__option">
-          <span className="header__optionOne">Hello</span>
-          <span className="header__optionTwo">Sign In</span>
-        </div>
+        <Link to="/login">
+          <div className="header__option">
+            <span className="header__optionOne">Hello</span>
+            <span className="header__optionTwo">Sign In</span>
+          </div>
+        </Link>
+
         <div className="header__option">
           <span className="header__optionOne">Your</span>
           <span className="header__optionTwo">Orders</span>
