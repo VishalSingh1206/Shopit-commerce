@@ -11,7 +11,7 @@ function Login() {
     e.preventDefault();
 
     auth
-      .createUserWithEmailAndPassword(email, password)
+      .signInWithEmailAndPassword(email, password)
       .then((auth) => {
         if (auth) {
           navigate("/");
@@ -37,7 +37,7 @@ function Login() {
 
   return (
     <div className="login">
-      <h1>Login Page</h1>
+      {/* <h1>Login Page</h1> */}
       <Link to="/">
         <img
           src="https://raw.githubusercontent.com/VishalSingh1206/Shopit-commerce/master/public/Asset%203final.png"

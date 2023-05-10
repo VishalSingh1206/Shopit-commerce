@@ -5,7 +5,7 @@ import Checkoutproduct from "./Checkoutproduct";
 import { useStateValue } from "./Stateprovider";
 
 function Checkout() {
-  const [{ basket }, dispatch] = useStateValue();
+  const [{ basket, user }, dispatch] = useStateValue();
 
   return (
     <div className="checkout">
@@ -15,7 +15,9 @@ function Checkout() {
           src="https://raw.githubusercontent.com/VishalSingh1206/Shopit-commerce/master/public/banner%202%20checkout%20page.png"
           alt="Image Here"
         />
-        <h2 className="checkout__title">Your Shopping Basket</h2>
+        <h2 className="checkout__title">
+          <h3>Hello , {user?.email}</h3>Your Shopping Basket
+        </h2>
         {basket.map((item) => (
           <Checkoutproduct
             id={item.id}

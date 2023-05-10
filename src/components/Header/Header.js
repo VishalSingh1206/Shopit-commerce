@@ -2,11 +2,19 @@ import React from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import "./Header.css";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useStateValue } from "../Checkout/Stateprovider";
+import { auth } from "../../firebase";
 
 function Header() {
-  const [{ basket }, dispatch] = useStateValue();
+  const navigate = useNavigate();
+  const handleAuthentication = () => {
+    if (user) {
+      auth.signOut();
+      navigate("/");
+    }
+  };
+  const [{ basket, user }, dispatch] = useStateValue();
   return (
     <div className="header">
       <Link to="/">
@@ -21,10 +29,14 @@ function Header() {
         {/*Logo*/}
       </div>
       <div className="header__nav">
-        <Link to="/login">
-          <div className="header__option">
-            <span className="header__optionOne">Hello</span>
-            <span className="header__optionTwo">Sign In</span>
+        <Link to={!user && "/login"}>
+          <div className="header__option" onClick={handleAuthentication}>
+            <span className="header__optionOne">
+              Hello {user ? user?.email.split("@")[0] : "Guest"}
+            </span>
+            <span className="header__optionTwo">
+              {user ? "SIGN OUT" : "SIGN IN"}
+            </span>
           </div>
         </Link>
 
