@@ -4,6 +4,7 @@ import Home from "./components/Home/Home";
 import Login from "./components/Login/Login";
 import Checkout from "./components/Checkout/Checkout";
 import Payment from "./components/Payment/Payment";
+import Orders from "./components/Orders/Orders";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useEffect } from "react";
 import { auth } from "./firebase";
@@ -12,9 +13,7 @@ import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 // import { Payment } from "@mui/icons-material";
 
-const promise = loadStripe(
-  "pk_test_51N6IdmSEfM7Vz5AslO99cDZfc7OqhFZsVgnj8VsBlJlS3o02jpsPdfFUoFRitIi7WaqoP8oK4vTFNOhH0flCgCSg00kC6jUuWr"
-);
+const promise = loadStripe(process.env.REACT_APP_stripe_pk);
 
 function App() {
   const [{}, dispatch] = useStateValue();
@@ -76,6 +75,14 @@ function App() {
             element={
               <>
                 <Login />
+              </>
+            }
+          />
+          <Route
+            path="/orders"
+            element={
+              <>
+                <Orders />
               </>
             }
           />
